@@ -63,6 +63,10 @@ while (exit_program != True):
             emp_temp_record = {"Name":emp_name, "Department" : emp_dep, "Salary" : emp_salary}
             emp_mngmt_system.update({emp_id:emp_temp_record})
             print("Information successfully updated.")
+
+            #NEED CHANGES! Update this elif block so the user is asked about each individual parameter they want to change
+            #Need another menu block inside this if -> might need us to use functions
+
     elif choice == 5: #Deleting employee record
         emp_id = int(input("Enter your employee id: "))
         emp_ids = emp_mngmt_system.keys()
@@ -76,7 +80,6 @@ while (exit_program != True):
         exit_program = True
     else:
         assert('Please enter a correct option number out of the menu.')
-quit()
 
 
 
