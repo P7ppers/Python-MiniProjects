@@ -29,6 +29,7 @@ menu_prompt = "\nEmployment Management System:\n\
 4) update employee record\n\
 5) delete employee record\n\
 6) exit\n"
+update_prompt = "\nUpdate Information: \n1)Name\n2)Department\n3)Salary\n4)Updates done"
 
 while (exit_program != True):
     print(menu_prompt)
@@ -56,17 +57,23 @@ while (exit_program != True):
         if emp_id not in emp_ids:
             print("Existing record not found! Please insert a employee record first")
         else:
-            print("Record found. Please provide updated information.")
-            emp_name = (input("Enter your employee name: "))
-            emp_dep = (input("Enter your employee department name: "))
-            emp_salary = int(input("Enter your employee salary: "))
-            emp_temp_record = {"Name":emp_name, "Department" : emp_dep, "Salary" : emp_salary}
+            print("Record found. Proceeding with update.")
+            emp_temp_record = emp_mngmt_system[emp_id]
+            emp_name, emp_dep, emp_salary = emp_temp_record["Name"], emp_temp_record["Department"], emp_temp_record["Salary"]
+            while (True):
+                print(update_prompt)
+                upd_choice = int(input("Please enter update parameter number: "))
+                if upd_choice==1:
+                    emp_name = (input("Enter your employee name: "))
+                elif upd_choice ==2:
+                    emp_dep = (input("Enter your employee department name: "))
+                elif upd_choice==3:
+                    emp_salary = int(input("Enter your employee salary: "))
+                elif upd_choice == 4:
+                    break
+            emp_temp_record.update({"Name":emp_name, "Department" : emp_dep, "Salary" : emp_salary})
             emp_mngmt_system.update({emp_id:emp_temp_record})
-            print("Information successfully updated.")
-
-            #NEED CHANGES! Update this elif block so the user is asked about each individual parameter they want to change
-            #Need another menu block inside this if -> might need us to use functions
-
+            print("Your record has been successfully updated!")
     elif choice == 5: #Deleting employee record
         emp_id = int(input("Enter your employee id: "))
         emp_ids = emp_mngmt_system.keys()
@@ -79,14 +86,4 @@ while (exit_program != True):
         print("Exiting Program...")
         exit_program = True
     else:
-        assert('Please enter a correct option number out of the menu.')
-
-
-
-
-
-
-
-
-
-
+        print('Please enter a correct option number out of the menu.')
