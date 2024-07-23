@@ -58,8 +58,6 @@ while (exit_program != True):
             print("Existing record not found! Please insert a employee record first")
         else:
             print("Record found. Proceeding with update.")
-
-            # PATCH 1
             emp_temp_record = emp_mngmt_system[emp_id]
             emp_name, emp_dep, emp_salary = emp_temp_record["Name"], emp_temp_record["Department"], emp_temp_record["Salary"]
             while (True):
@@ -76,12 +74,6 @@ while (exit_program != True):
             emp_temp_record.update({"Name":emp_name, "Department" : emp_dep, "Salary" : emp_salary})
             emp_mngmt_system.update({emp_id:emp_temp_record})
             print("Your record has been successfully updated!")
-
-            #NEED CHANGES! Update this elif block so the user is asked about each individual parameter they want to change
-            #Need another menu block inside this if -> might need us to use functions
-
-            # CHANGES MADE PLEASE REVIEW
-
     elif choice == 5: #Deleting employee record
         emp_id = int(input("Enter your employee id: "))
         emp_ids = emp_mngmt_system.keys()
@@ -95,13 +87,3 @@ while (exit_program != True):
         exit_program = True
     else:
         print('Please enter a correct option number out of the menu.')
-
-
-
-
-
-
-
-
-
-
